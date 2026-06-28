@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DePadi — Deteksi Penyakit Padi dengan AI</title>
+  <meta name="description"
+    content="DePadi menggunakan teknologi Swin Transformer Large dan MLP untuk mendeteksi penyakit padi melalui foto daun secara akurat dan cepat." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="assets/images/logo.png" />
+</head>
+
+<body>
+
+  <!-- Background Orbs -->
+  <div class="bg-orbs">
+    <div class="orb"></div>
+    <div class="orb"></div>
+    <div class="orb"></div>
+  </div>
+
+  <!-- =============================================
+       NAVIGATION
+       ============================================= -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="#beranda" class="navbar-brand" id="nav-brand">
+        <img src="assets/images/logo.png" alt="DePadi Logo" />
+        <span>DePadi</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#beranda" class="active" id="nav-beranda">Beranda</a></li>
+        <li><a href="#tentang" id="nav-tentang">Tentang</a></li>
+        <li><a href="#cara-penggunaan" id="nav-cara">Cara Penggunaan</a></li>
+        <li><a href="#deteksi" class="nav-cta" id="nav-deteksi">Deteksi Sekarang</a></li>
+      </ul>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- =============================================
+       HERO / BERANDA
+       ============================================= -->
+  <section class="hero" id="beranda">
+    <div class="hero-bg">
+      <img src="assets/images/hero-bg.png" alt="Rice paddy field" />
+    </div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          Powered by Swin Transformer Large
+        </div>
+        <h1>
+          Deteksi Penyakit Padi<br />
+          dengan <span class="gradient-text">Kecerdasan Buatan</span>
+        </h1>
+        <p>
+          DePadi memanfaatkan model deep learning Swin Transformer Large sebagai backbone
+          dan MLP sebagai klasifikasi untuk mendeteksi 5 jenis penyakit pada daun padi
+          dengan akurasi tinggi melalui foto.
+        </p>
+        <div class="hero-actions">
+          <a href="#deteksi" class="btn btn-primary btn-lg" id="btn-mulai-deteksi">
+            <span class="btn-icon"></span> Mulai Deteksi
+          </a>
+          <a href="#tentang" class="btn btn-outline btn-lg" id="btn-pelajari">
+            Pelajari Lebih Lanjut
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="number">8,574</div>
+            <div class="label">Dataset Gambar</div>
+          </div>
+          <div class="hero-stat">
+            <div class="number">6</div>
+            <div class="label">Kelas Deteksi</div>
+          </div>
+          <div class="hero-stat">
+            <div class="number">Swin-L</div>
+            <div class="label">Backbone Model</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="hero-card-header">
+            <div class="icon"></div>
+            <span>Hasil Analisis</span>
+          </div>
+          <div class="hero-card-preview">
+            <img src="assets/images/brownspot.png" alt="Sample detection" />
+          </div>
+          <div class="hero-card-result">
+            <div>
+              <div class="label">Penyakit Terdeteksi</div>
+              <div class="value">Brown Spot</div>
+            </div>
+            <div class="confidence">97.8%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       TENTANG DePadi
+       ============================================= -->
+  <section class="section" id="tentang">
+    <div class="container">
+      <div class="section-header fade-in">
+        <div class="section-label">
+          <span class="line"></span>
+          Tentang DePadi
+          <span class="line"></span>
+        </div>
+        <h2>Teknologi AI untuk Pertanian Cerdas</h2>
+        <p>
+          DePadi adalah sistem deteksi penyakit padi berbasis kecerdasan buatan yang
+          dirancang untuk membantu petani Indonesia mengidentifikasi penyakit pada tanaman padi
+          secara cepat dan akurat.
+        </p>
+      </div>
+
+      <div class="about-grid fade-in">
+        <div class="about-image">
+          <div class="about-image-main">
+            <img src="assets/images/hero-bg.png" alt="Sawah padi Indonesia" />
+          </div>
+          <div class="about-float-card">
+            <div class="icon-box"></div>
+            <div class="info">
+              <h4>Deep Learning</h4>
+              <p>Swin Transformer Large + MLP</p>
+            </div>
+          </div>
+        </div>
+        <div class="about-content">
+          <h3>Mengapa DePadi?</h3>
+          <p>
+            Penyakit pada tanaman padi merupakan salah satu ancaman terbesar bagi ketahanan pangan
+            di Indonesia. Identifikasi dini penyakit sangat penting untuk meminimalkan kerugian hasil
+            panen. DePadi hadir sebagai solusi cerdas yang memungkinkan petani mendeteksi penyakit
+            hanya dengan memotret daun padi.
+          </p>
+          <p>
+            Sistem ini dibangun menggunakan arsitektur <strong>Swin Transformer Large</strong>
+            sebagai backbone untuk ekstraksi fitur gambar, dikombinasikan dengan
+            <strong>Multi-Layer Perceptron (MLP)</strong> sebagai klasifikasi akhir.
+            Model dilatih pada <strong>8,574 gambar bersih</strong> dari 3 dataset yang telah
+            melalui proses deduplikasi dan normalisasi.
+          </p>
+          <div class="about-features">
+            <div class="about-feature">
+              <span class="check"></span>
+              <span>Backbone Swin Transformer Large</span>
+            </div>
+            <div class="about-feature">
+              <span class="check"></span>
+              <span>Klasifikasi MLP Head</span>
+            </div>
+            <div class="about-feature">
+              <span class="check"></span>
+              <span>6 Kelas Penyakit</span>
+            </div>
+            <div class="about-feature">
+              <span class="check"></span>
+              <span>8,574 Data Terverifikasi</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Architecture Pipeline -->
+      <div class="architecture fade-in">
+        <div class="section-header" style="margin-bottom: var(--space-xl);">
+          <div class="section-label">
+            <span class="line"></span>
+            Arsitektur Model
+            <span class="line"></span>
+          </div>
+          <h2>Pipeline Deteksi</h2>
+        </div>
+        <div class="arch-pipeline">
+          <div class="arch-step">
+            <div class="step-icon"></div>
+            <h4>Input Gambar</h4>
+            <p>Foto daun padi<br />224×224 px</p>
+          </div>
+          <span class="arch-arrow">→</span>
+          <div class="arch-step">
+            <div class="step-icon"></div>
+            <h4>Preprocessing</h4>
+            <p>Resize, Normalize<br />Augmentasi</p>
+          </div>
+          <span class="arch-arrow">→</span>
+          <div class="arch-step">
+            <div class="step-icon"></div>
+            <h4>Swin-L Backbone</h4>
+            <p>Feature Extraction<br />Shifted Windows</p>
+          </div>
+          <span class="arch-arrow">→</span>
+          <div class="arch-step">
+            <div class="step-icon"></div>
+            <h4>MLP Classifier</h4>
+            <p>Multi-Layer<br />Perceptron Head</p>
+          </div>
+          <span class="arch-arrow">→</span>
+          <div class="arch-step">
+            <div class="step-icon"></div>
+            <h4>Prediksi</h4>
+            <p>6 Kelas<br />+ Confidence</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Disease Catalog -->
+      <div class="fade-in" style="margin-top: var(--space-4xl);">
+        <div class="section-header">
+          <div class="section-label">
+            <span class="line"></span>
+            Katalog Penyakit
+            <span class="line"></span>
+          </div>
+          <h2>Penyakit yang Dapat Dideteksi</h2>
+          <p>DePadi mampu mengidentifikasi 5 jenis penyakit padi serta kondisi daun sehat</p>
+        </div>
+        <div class="disease-grid">
+          <div class="disease-card" id="card-leafblast">
+            <div class="disease-card-img">
+              <img src="assets/images/leafblast.png" alt="Leaf Blast" />
+            </div>
+            <div class="disease-card-body">
+              <h4>Leaf Blast</h4>
+              <p class="latin">Magnaporthe oryzae</p>
+              <p>Penyakit blas daun ditandai dengan lesi berbentuk belah ketupat berwarna abu-abu di tengah dengan tepi
+                cokelat gelap. Dapat menyebar cepat terutama di musim hujan.</p>
+            </div>
+          </div>
+          <div class="disease-card" id="card-brownspot">
+            <div class="disease-card-img">
+              <img src="assets/images/brownspot.png" alt="Brown Spot" />
+            </div>
+            <div class="disease-card-body">
+              <h4>Brown Spot</h4>
+              <p class="latin">Helminthosporium oryzae</p>
+              <p>Ditandai dengan bercak oval kecil berwarna cokelat dengan pusat keabu-abuan tersebar di permukaan daun.
+                Menurunkan kualitas gabah secara signifikan.</p>
+            </div>
+          </div>
+          <div class="disease-card" id="card-blight">
+            <div class="disease-card-img">
+              <img src="assets/images/blight.png" alt="Bacterial Blight" />
+            </div>
+            <div class="disease-card-body">
+              <h4>Bacterial Blight</h4>
+              <p class="latin">Xanthomonas oryzae</p>
+              <p>Hawar daun bakteri menyebabkan lesi kuning-putih dari ujung daun, mengering dan menjadi cokelat. Sangat
+                merusak pada varietas rentan.</p>
+            </div>
+          </div>
+          <div class="disease-card" id="card-tungro">
+            <div class="disease-card-img">
+              <img src="assets/images/tungro.png" alt="Tungro" />
+            </div>
+            <div class="disease-card-body">
+              <h4>Tungro</h4>
+              <p class="latin">Rice Tungro Virus</p>
+              <p>Penyakit virus yang ditularkan oleh wereng hijau. Daun menguning-oranye dari ujung, tanaman kerdil dan
+                hasil panen menurun drastis.</p>
+            </div>
+          </div>
+          <div class="disease-card" id="card-hispa">
+            <div class="disease-card-img">
+              <img src="assets/images/hispa.png" alt="Hispa" />
+            </div>
+            <div class="disease-card-body">
+              <h4>Hispa</h4>
+              <p class="latin">Dicladispa armigera</p>
+              <p>Kerusakan akibat kumbang hispa yang mengikis permukaan daun membuat garis-garis putih paralel. Serangan
+                berat menyebabkan daun mengering.</p>
+            </div>
+          </div>
+          <div class="disease-card" id="card-healthy">
+            <div class="disease-card-img">
+              <img src="assets/images/healthy.png" alt="Healthy" />
+            </div>
+            <div class="disease-card-body">
+              <h4>Healthy (Sehat)</h4>
+              <p class="latin">Oryza sativa</p>
+              <p>Daun padi sehat berwarna hijau segar, permukaan halus dengan urat daun paralel yang jelas, tanpa bercak
+                atau perubahan warna abnormal.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       CARA PENGGUNAAN
+       ============================================= -->
+  <section class="section" id="cara-penggunaan" style="background: var(--clr-bg-secondary);">
+    <div class="container">
+      <div class="section-header fade-in">
+        <div class="section-label">
+          <span class="line"></span>
+          Cara Penggunaan
+          <span class="line"></span>
+        </div>
+        <h2>Mudah & Cepat dalam 4 Langkah</h2>
+        <p>Ikuti langkah-langkah sederhana berikut untuk mendeteksi penyakit pada daun padi Anda</p>
+      </div>
+
+      <div class="steps-grid fade-in">
+        <div class="step-card" id="step-1">
+          <div class="step-number">1</div>
+          <div class="step-icon"></div>
+          <h3>Ambil Foto</h3>
+          <p>Potret daun padi yang ingin diperiksa dengan kamera ponsel. Pastikan foto jelas dan fokus pada area yang
+            bermasalah.</p>
+        </div>
+        <div class="step-card" id="step-2">
+          <div class="step-number">2</div>
+          <div class="step-icon"></div>
+          <h3>Unggah Gambar</h3>
+          <p>Unggah foto ke sistem DePadi melalui area upload. Anda dapat drag & drop atau klik untuk memilih file
+            gambar.</p>
+        </div>
+        <div class="step-card" id="step-3">
+          <div class="step-number">3</div>
+          <div class="step-icon"></div>
+          <h3>Analisis AI</h3>
+          <p>Swin Transformer Large mengekstrak fitur dari gambar, kemudian MLP mengklasifikasikan jenis penyakit secara
+            otomatis.</p>
+        </div>
+        <div class="step-card" id="step-4">
+          <div class="step-number">4</div>
+          <div class="step-icon"></div>
+          <h3>Lihat Hasil</h3>
+          <p>Dapatkan hasil deteksi berupa nama penyakit, tingkat kepercayaan (confidence), dan informasi penanganan
+            penyakit.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       DETEKSI PENYAKIT
+       ============================================= -->
+  <section class="section" id="deteksi">
+    <div class="container">
+      <div class="section-header fade-in">
+        <div class="section-label">
+          <span class="line"></span>
+          Deteksi Penyakit
+          <span class="line"></span>
+        </div>
+        <h2>Unggah Foto Daun Padi</h2>
+        <p>Unggah foto daun padi dan biarkan AI kami menganalisis kondisi tanaman Anda</p>
+      </div>
+
+      <div class="detection-wrapper fade-in">
+        <!-- Upload Panel -->
+        <div class="detection-upload">
+          <h3>Upload Gambar</h3>
+          <div class="upload-zone" id="uploadZone">
+            <div class="upload-placeholder">
+              <div class="upload-icon"></div>
+              <h4>Drag & Drop foto di sini</h4>
+              <p>atau klik untuk memilih file • JPG, PNG, JPEG</p>
+            </div>
+            <div class="upload-preview" id="uploadPreview">
+              <img id="previewImg" src="" alt="Preview" />
+            </div>
+            <input type="file" id="fileInput" accept="image/jpeg,image/png,image/jpg" />
+          </div>
+          <div class="upload-actions">
+            <button class="btn btn-primary" id="btnDetect" disabled>
+              <span class="btn-icon"></span> Deteksi Penyakit
+            </button>
+            <button class="btn btn-outline" id="btnReset" style="display:none;">
+              <span class="btn-icon"></span> Reset
+            </button>
+          </div>
+        </div>
+
+        <!-- Results Panel -->
+        <div class="detection-result">
+          <h3>Hasil Analisis</h3>
+
+          <!-- Placeholder -->
+          <div class="result-placeholder" id="resultPlaceholder">
+            <div class="icon"></div>
+            <p>Unggah foto daun padi untuk memulai analisis deteksi penyakit</p>
+          </div>
+
+          <!-- Loading -->
+          <div class="loading-spinner" id="loadingSpinner">
+            <div class="spinner"></div>
+            <p>Menganalisis gambar dengan Swin-L + MLP...</p>
+            <p class="loading-sub" id="loadingSub"></p>
+          </div>
+
+          <!-- Error -->
+          <div class="result-error" id="resultError" style="display:none;">
+            <div class="error-icon">⚠️</div>
+            <h4 id="errorTitle">Backend Tidak Tersedia</h4>
+            <p id="errorMessage">Pastikan server backend (app.py) sudah berjalan di http://localhost:5000</p>
+            <button class="btn btn-outline" id="btnRetry" style="margin-top: 1rem;">Coba Lagi</button>
+          </div>
+
+          <!-- Anomaly -->
+          <div class="result-anomaly" id="resultAnomaly" style="display:none;">
+            <div class="anomaly-icon">🔍❓</div>
+            <h4>Objek Tidak Dikenali</h4>
+            <p>Gambar yang diunggah tampaknya <strong>bukan daun padi</strong> (atau kualitas gambar sangat buruk). Silakan unggah foto daun padi yang jelas.</p>
+          </div>
+
+          <!-- Result Content -->
+          <div class="result-content" id="resultContent">
+            <div class="result-main" id="resultMain">
+              <div class="result-label">Penyakit Terdeteksi</div>
+              <div class="result-disease" id="resultDisease">—</div>
+              <div class="result-confidence">
+                <div class="confidence-bar">
+                  <div class="confidence-bar-fill" id="confidenceBarFill" style="width: 0%"></div>
+                </div>
+                <div class="confidence-value" id="confidenceValue">0%</div>
+              </div>
+            </div>
+
+            <!-- GradCAM Visualization -->
+            <div class="gradcam-section" id="gradcamSection">
+              <h4>GradCAM — Area Fokus AI</h4>
+              <p class="gradcam-desc">Visualisasi area pada daun yang paling diperhatikan oleh model Swin Transformer
+                untuk menentukan prediksi.</p>
+              <!-- Placeholder: demo overlay centered -->
+              <div class="gradcam-demo" id="gradcamDemo">
+                <div class="gradcam-demo-wrap">
+                  <canvas id="gradcamDemoCanvas" width="224" height="224"></canvas>
+                </div>
+                <p class="gradcam-demo-label">Contoh visualisasi GradCAM</p>
+              </div>
+
+              <!-- Actual 3-column results (hidden until detection) -->
+              <div class="gradcam-grid" id="gradcamGrid" style="display: none;">
+                <div class="gradcam-item">
+                  <div class="gradcam-label">Gambar Asli</div>
+                  <div class="gradcam-img-wrap">
+                    <canvas id="gradcamOriginal" width="224" height="224"></canvas>
+                  </div>
+                </div>
+                <div class="gradcam-item">
+                  <div class="gradcam-label">Heatmap</div>
+                  <div class="gradcam-img-wrap">
+                    <canvas id="gradcamHeatmap" width="224" height="224"></canvas>
+                  </div>
+                </div>
+                <div class="gradcam-item">
+                  <div class="gradcam-label">Overlay</div>
+                  <div class="gradcam-img-wrap">
+                    <canvas id="gradcamOverlay" width="224" height="224"></canvas>
+                  </div>
+                </div>
+              </div>
+              <div class="gradcam-legend">
+                <div class="legend-bar"></div>
+                <div class="legend-labels">
+                  <span>Rendah</span>
+                  <span>Sedang</span>
+                  <span>Tinggi</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="result-details">
+              <h4>Distribusi Probabilitas</h4>
+              <div class="result-bars" id="resultBars">
+                <!-- Dynamically filled -->
+              </div>
+            </div>
+
+            <div class="disease-info-card" id="diseaseInfoCard">
+              <h4><span id="diseaseInfoTitle">Informasi Penyakit</span></h4>
+              <p id="diseaseInfoText">—</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hidden canvas for GradCAM processing -->
+        <canvas id="gradcamProcess" width="224" height="224" style="display:none;"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       FOOTER
+       ============================================= -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#beranda" class="navbar-brand">
+            <img src="assets/images/logo.png" alt="DePadi Logo" />
+            <span>DePadi</span>
+          </a>
+          <p>
+            Solusi cerdas deteksi penyakit padi berbasis kecerdasan buatan.
+            Dibangun dengan Swin Transformer Large dan MLP untuk membantu
+            petani Indonesia melindungi hasil panennya.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigasi</h4>
+          <ul>
+            <li><a href="#beranda">Beranda</a></li>
+            <li><a href="#tentang">Tentang DePadi</a></li>
+            <li><a href="#cara-penggunaan">Cara Penggunaan</a></li>
+            <li><a href="#deteksi">Deteksi Penyakit</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Penyakit</h4>
+          <ul>
+            <li><a href="#card-leafblast">Leaf Blast</a></li>
+            <li><a href="#card-brownspot">Brown Spot</a></li>
+            <li><a href="#card-blight">Bacterial Blight</a></li>
+            <li><a href="#card-tungro">Tungro</a></li>
+            <li><a href="#card-hispa">Hispa</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 DePadi — SATRIA DATA 2026. All rights reserved.</p>
+        <div class="tech-stack">
+          <span class="tech-tag">Swin-Large</span>
+          <span class="tech-tag">MLP</span>
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">PyTorch</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
