@@ -1,0 +1,17 @@
+# DePadi Backend Dependencies
+# ============================
+# Install: pip install -r requirements.txt
+
+flask>=3.0
+flask-cors>=4.0
+numpy>=1.24
+Pillow>=10.0
+scipy>=1.11
+
+# Deep Learning
+tensorflow>=2.14
+torch>=2.0
+timm>=0.9
+
+# Optional: for GPU support, install torch with CUDA separately
+# pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
