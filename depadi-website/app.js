@@ -241,7 +241,7 @@ btnReset.addEventListener("click", () => {
 // =============================================
 // Backend API Configuration
 // =============================================
-const API_BASE_URL = "http://localhost:5000";
+const API_BASE_URL = "https://abdulrosyid-depadi.hf.space";
 let backendAvailable = null; // null = unknown, true/false after check
 
 /**
@@ -251,7 +251,7 @@ async function checkBackendHealth() {
   try {
     const response = await fetch(`${API_BASE_URL}/health`, {
       method: "GET",
-      signal: AbortSignal.timeout(3000),
+      signal: AbortSignal.timeout(15000),
     });
     if (response.ok) {
       const data = await response.json();
@@ -305,9 +305,9 @@ async function detectWithBackend() {
 
     // Update loading messages
     const loadingSteps = [
-      { text: "Ekstraksi fitur Swin Transformer Large...", delay: 1500 },
-      { text: "Menghitung GradCAM heatmap...", delay: 3000 },
-      { text: "Klasifikasi MLP...", delay: 5000 },
+        "Ekstraksi fitur Swin Transformer Large...",
+        "Menghitung GradCAM...",
+        "Klasifikasi MLP..."
     ];
 
     // Start loading message rotation
@@ -349,8 +349,8 @@ async function detectWithBackend() {
     // Show error message
     showError(
       "Backend Tidak Tersedia",
-      error.message.includes("Failed to fetch") || error.message.includes("NetworkError") || error.message.includes("Load failed")
-        ? "Pastikan server backend (app.py) sudah berjalan di http://localhost:5000. Jalankan: python app.py"
+      error.message.includes("Failed to fetch")
+        ? "Tidak dapat terhubung ke server AI. Silakan coba beberapa saat lagi."
         : `Error: ${error.message}`
     );
   }
